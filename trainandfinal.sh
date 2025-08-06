@@ -46,8 +46,8 @@ pip3 install -e .
 
 python3 -m piper_train.preprocess \
   --language en \
-  --input-dir ~/your_training_data_directory/ \
-  --output-dir ~/your_output_directory \
+  --input-dir ~/training/ \
+  --output-dir ~/final \
   --dataset-format ljspeech \
   --single-speaker \
   --sample-rate 22050
@@ -66,7 +66,7 @@ python3 -m piper_train \
     --validation-split 0.0 \
     --num-test-examples 0 \
     --max_epochs 6000 \
-    --resume_from_checkpoint "/place/where/you/downloaded/thecheckpoint/epoch=2218-step=838782.ckpt" \
+    --resume_from_checkpoint "epoch=2218-step=838782.ckpt" \
     --checkpoint-epochs 1 \
     --precision 16 \
     --max-phoneme-ids 400 \
@@ -76,7 +76,7 @@ python3 -m piper_train \
 ## Export the model
 
 python3 -m piper_train.export_onnx \
-    "/path/to/your/checkpoint/checkpoints/epoch=5999-step=853906.ckpt" \
+    "epoch=5999-step=853906.ckpt" \
     ~/output/directory/voicename.onnx
 
 ## Copy the training json file to your model file directory
